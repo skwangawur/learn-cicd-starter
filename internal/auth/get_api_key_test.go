@@ -1,4 +1,3 @@
-
 package auth
 
 import (
@@ -9,10 +8,10 @@ import (
 
 func TestGetAPIKey(t *testing.T) {
 	tests := []struct {
-		name        string
-		headers     http.Header
-		want        string
-		wantErr     error
+		name    string
+		headers http.Header
+		want    string
+		wantErr error
 	}{
 		{
 			name:    "no authorization header",

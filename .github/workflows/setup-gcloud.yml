@@ -26,5 +26,9 @@ jobs:
         runs-on: ubuntu-latest
         needs: SetupCloud
         steps:
+
+            - name: Checkout code
+              uses: actions/checkout@v3
+              
             - name: 'build docker image'
               run: gcloud builds submit --tag us-central1-docker.pkg.dev/bootdev-cicd-507910/notely-ar-repo/notely:latest .

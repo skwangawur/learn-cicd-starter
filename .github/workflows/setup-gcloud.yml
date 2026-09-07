@@ -29,6 +29,12 @@ jobs:
 
             - name: Checkout code
               uses: actions/checkout@v3
-              
+
+            
+            - name: setup go
+              uses: actions/setup-go@v4
+              with:
+                  go-version: 1.22.0
+
             - name: 'build docker image'
               run: gcloud builds submit --tag us-central1-docker.pkg.dev/bootdev-cicd-507910/notely-ar-repo/notely:latest .

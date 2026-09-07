@@ -19,3 +19,18 @@ jobs:
 
             - name: build the app
               run: ./scripts/buildprod.sh
+
+            - name: Authenticate to Google Cloud
+              uses: google-github-actions/auth@v3
+              with:
+                credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
+                project_id: 'bootdev-cicd-507910'
+
+            - name: Set up Cloud SDK
+              uses: google-github-actions/setup-gcloud@v3
+
+            - name: Build Docker image
+              run: |
+                gcloud builds submit \
+                  --tag us-central1-docker.pkg.dev/bootdev-cicd-507910/notely-ar-repo/notely:latest \
+                  .
